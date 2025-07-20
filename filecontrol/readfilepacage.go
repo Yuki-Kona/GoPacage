@@ -22,7 +22,7 @@ import (
 func FileExists(path string) (bool, os.FileInfo, error) {
 	info, err := os.Stat(path)
 	if err == nil {
-		//ファイルが開ける
+		//ファイルを開れる
 		return true, info, nil
 	}
 
@@ -36,21 +36,10 @@ func FileExists(path string) (bool, os.FileInfo, error) {
 		return false, nil, fmt.Errorf("[XoX] not have permission :%w", err)
 	}
 
+	//その他のエラー
 	return false, nil, fmt.Errorf("[XoX] stat error :%w", err)
 }
 
-/*
-このパッケージ内のテストファイル(test.txt)を読み取る
-*/
-func TestFileOpen() error {
-	data, err := ReadFile("FileControl/test.txt")
-	if err != nil {
-		return err
-	}
-	fmt.Printf("File content: %s", data)
-
-	return nil
-}
 
 /*
 引数に渡したパスのテキストファイルを読み取る
@@ -95,7 +84,7 @@ func ReadFile(path string) ([]byte, error) {
 
 	*T , error
 */
-func ReadJsonFile[T any](path string, t *T) (*T, error) {
+func ReadJsonFile[T any](path string, t T) (T, error) {
 	json, err := ReadFile(path)
 	if err != nil {
 		return t, err

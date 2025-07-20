@@ -51,7 +51,7 @@ structをJson形式にコンパイルする
 
 **return**
 
-	[]byte,error
+	[]byte , error
 */
 func CompileStructToJson(value any, properties ...string) ([]byte, error) {
 	//valueがnilなら弾く
@@ -91,13 +91,13 @@ AllowedIndentに入れることのできる値かどうか確認する
 
 **param**
 
-s stirng //使用するプロパティ
+	s stirng //使用するプロパティ
 
 properties []string //使用できるプロパティ配列
 
 **return**
 
-	string,error
+	string , error
 */
 func isAllowedIndent(s string, properties []string) (string, error) {
 	for _, v := range properties {
